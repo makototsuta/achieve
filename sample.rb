@@ -1,6 +1,5 @@
 class Player
   def hand
-    # コンソールを入力待ち状態にし、プレイヤーがコンソールから打ち込んだ値を出力する処理のメソッドの処理をこの中に作成する
     while true
       puts "数字を入力してください。"
       puts "0: グー"
@@ -21,7 +20,6 @@ class Enemy
   def hand
     janken = [0,1,2]
     return janken.sample
-    # グー、チョキ、パーの値をランダムに出力するメソッドの処理をこの中に作成する
   end
 end
 
@@ -36,32 +34,20 @@ class Janken
       name = "パー"
     end
 
-  while true
-    if (player_hand-enemy_hand+3)%3==2
-      puts "相手の手は#{name}です。あなたの勝ちです"
-      break
-    elsif (player_hand-enemy_hand+3)%3==1
-      puts "相手の手は#{name}です。あなたの負けです"
-      break
-    else
-      puts "あいこです。"
-      while true
-        puts "数字を入力してください。"
-        puts "0: グー"
-        puts "1: チョキ"
-        puts "2: パー"
-        number = gets.to_i
-
-        if number <= 2
-          player_hand = number
-          break
-        else
-          puts "「0〜2の数字を入力してください。」"
-        end
+    while true
+      if (player_hand-enemy_hand+3)%3==2
+        puts "相手の手は#{name}です。あなたの勝ちです"
+        break
+      elsif (player_hand-enemy_hand+3)%3==1
+        puts "相手の手は#{name}です。あなたの負けです"
+        break
+      else
+        puts "あいこです。"
+        player = Player.new
+        enemy = Enemy.new
+        janken = Janken.new
+        janken.pon(player.hand, enemy.hand)
       end
-      janken = [0,1,2]
-      enemy_hand = janken.sample
-    end
     end
   end
 end
@@ -70,5 +56,9 @@ player = Player.new
 enemy = Enemy.new
 janken = Janken.new
 
-# 下記の記述で、ジャンケンメソッドが起動される
 janken.pon(player.hand, enemy.hand)
+
+# ① player = Player.newの記述の意味
+     # Playerクラスからインスタンスを作成しplayerに代入
+# ② 大文字のPlayerと小文字のplayerの違い
+     # Playerはクラス名、playerは変数名
