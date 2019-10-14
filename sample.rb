@@ -7,7 +7,7 @@ class Player
       puts "2: パー"
       number = gets.to_i
 
-      if number <= 2
+      if number <= 2 && /^[0-9]+$/
         return number
       else
         puts "「0〜2の数字を入力してください。」"
