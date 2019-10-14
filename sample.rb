@@ -47,6 +47,7 @@ class Janken
         enemy = Enemy.new
         janken = Janken.new
         janken.pon(player.hand, enemy.hand)
+        break
       end
     end
   end
