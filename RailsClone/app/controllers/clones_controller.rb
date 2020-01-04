@@ -4,6 +4,7 @@ class ClonesController < ApplicationController
   end
 
   def new
+    @clone = Clone.new
   end
 
   def create
