@@ -8,6 +8,8 @@
 <% @clones.each do |clone| %>
   <tr>
     <td><%= clone.content %></td>
+
+    <td><%= link_to '詳細を確認する', clone_path(clone.id) %></td>
   </tr>
 <% end %>
 </table>

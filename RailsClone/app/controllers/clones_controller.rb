@@ -13,6 +13,9 @@ class ClonesController < ApplicationController
     redirect_to new_clone_path
   end
 
+  def show
+  end
+
   private
 
   def clone_params
