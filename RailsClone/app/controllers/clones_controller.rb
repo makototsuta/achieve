@@ -1,6 +1,7 @@
 class ClonesController < ApplicationController
 
   def index
+    @clones = Clone.all
   end
 
   def new

@@ -1,0 +1,15 @@
+<h1>Tweet一覧</h1>
+
+<table>
+  <tr>
+    <th>内容</th>
+  </tr>
+
+<% @clones.each do |clone| %>
+  <tr>
+    <td><%= clone.content %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to '新しくTweetを投稿する', new_clone_path %>
