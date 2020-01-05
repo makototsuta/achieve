@@ -1,4 +1,5 @@
 class ClonesController < ApplicationController
+  before_action :set_clone, only: [:show, :edit, :update, :destroy]
 
   def index
     @clones = Clone.all
@@ -10,11 +11,14 @@ class ClonesController < ApplicationController
 
   def create
     @clone = Clone.new(clone_params)
-    if @clone.save
-
-      redirect_to clones_path, notice:"メッセージを投稿しました"
+    if params[:back]
+      render :new
     else
-      render:new
+      if @clone.save
+        redirect_to clones_path, notice: "Tweetを投稿しました！"
+      else
+        render 'new'
+      end
     end
   end
 
@@ -36,10 +40,19 @@ class ClonesController < ApplicationController
     redirect_to clones_path, notice:"Tweetを削除しました！"
   end
 
+  def confirm
+    @clone = Clone.new(clone_params)
+    render :new if @clone.invalid?
+  end
+
   private
 
   def clone_params
     params.require(:clone).permit(:content)
+  end
+
+  def set_clone
+    @clone = Clone.find(params[:id])
   end
 
 end
