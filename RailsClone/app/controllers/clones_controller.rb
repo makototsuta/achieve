@@ -18,6 +18,19 @@ class ClonesController < ApplicationController
     end
   end
 
+  def edit
+    @clone = Clone.find(params[:id])
+  end
+
+  def update
+    @clone = Clone.find(params[:id])
+    if @clone.update(clone_params)
+      redirect_to clones_path, notice: "Tweetを編集しました！"
+    else
+      render :edit
+    end
+  end
+
   private
 
   def clone_params

@@ -8,6 +8,7 @@
 <% @clones.each do |clone| %>
   <tr>
     <td><%= clone.content %></td>
+    <td><%= link_to "Tweetを編集する", edit_clone_path(clone.id) %></td>
 
   </tr>
 <% end %>
