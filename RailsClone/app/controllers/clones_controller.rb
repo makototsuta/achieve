@@ -9,8 +9,13 @@ class ClonesController < ApplicationController
   end
 
   def create
-    Clone.create(clone_params)
-    redirect_to new_clone_path
+    @clone = Clone.new(clone_params)
+    if @clone.save
+
+      redirect_to clones_path, notice:"メッセージを投稿しました"
+    else
+      render:new
+    end
   end
 
   private
