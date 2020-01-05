@@ -31,6 +31,11 @@ class ClonesController < ApplicationController
     end
   end
 
+  def destroy
+    @clone.destroy
+    redirect_to clones_path, notice:"Tweetを削除しました！"
+  end
+
   private
 
   def clone_params

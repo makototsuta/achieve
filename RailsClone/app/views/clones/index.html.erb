@@ -9,6 +9,7 @@
   <tr>
     <td><%= clone.content %></td>
     <td><%= link_to "Tweetを編集する", edit_clone_path(clone.id) %></td>
+    <td><%= link_to "Tweetを削除する", clone_path(clone.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
 
   </tr>
 <% end %>
