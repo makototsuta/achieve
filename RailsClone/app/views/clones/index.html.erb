@@ -1,28 +1,87 @@
-<div class="jumbotron">
+<div class="container-fluid ">
+  <div class="jumbotron">
+  </div>
 
-</div>
+  <header class="navbar navbar-expand-lg navbar-light">
 
-<div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <h1>Tweet一覧</h1>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto"">
+        <li class="nav-item"><a href="#" class="nav-link">ツイート</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">フォロー</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">フォロワー</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">いいね</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">リスト</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">モーメント</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">フォローする</a></li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
+      </form>
+    </div>
+  </header>
 
-  <p><%= notice %></p>
 
-  <table>
-    <tr>
-      <th>内容</th>
-    </tr>
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="section">
+        <i class="fab fa-twitter fa-5x"></i>
+        <p>日本語版Twitter公式アカウントです。サービスに関してのご質問、お問い合わせは https://support.twitter.com/をご利用ください。</p>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="article">
+        <div class="header">
+          <a>ツイート</a>
+          <a href="#">ツィートと返信</a>
+          <a href="#">メディア</a>
+          <%= link_to '新しくTweetを投稿する', new_clone_path %>
+          <hr>
+        </div>
 
-  <% @clones.each do |clone| %>
-    <tr>
-      <td><%= clone.content %></td>
-      <td><%= link_to "Tweetを編集する", edit_clone_path(clone.id) %></td>
-      <td><%= link_to "Tweetを削除する", clone_path(clone.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
+      <p><%= notice %></p>
 
-    </tr>
-  <% end %>
-  </table>
+        <table>
+          <tr>
+            <th>内容</th>
+          </tr>
 
-  <%= link_to '新しくTweetを投稿する', new_clone_path %>
-
+          <% @clones.each do |clone| %>
+            <tr>
+              <td><%= clone.content %></td>
+              <td><%= link_to "Tweetを編集する", edit_clone_path(clone.id) %></td>
+              <td><%= link_to "Tweetを削除する", clone_path(clone.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="sidebar">
+        <img src="/assets/delight_prompt_3.png">
+        <h5>Twitterの新機能をすべて利用するには、</h5>
+        <p>ログインしてください。</p>
+        <button type="button" class="btn btn-primary">ログイン</button>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <a href="http://localhost:3000">
+      <i class="fa fa-home" aria-hidden="true"></i>
+      トップページ
+    </a>
+    <a href="#">
+      <i class="fa fa-play-circle" aria-hidden="true"></i>
+      利用規約
+    </a>
+    <a href="#">
+      <i class="fa fa-play-circle" aria-hidden="true"></i>
+      サイトマップ
+    </a>
+    <p>© Copyright 2020 All rights reserved.</p>
+  </footer>
 </div>
